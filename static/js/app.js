@@ -1,3 +1,4 @@
+// JSX entrypoint (loaded via Babel in-browser)
 const DEFAULT_SITE = {
   brand: "Coderland",
   whatsapp: { phoneDisplay: "(48) 98800-6788", waMe: "https://wa.me/5548988006788" },
