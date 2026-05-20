@@ -39,5 +39,37 @@
       "items": ["Assistentes digitais", "Analise de dados", "Atendimento automatizado"],
       "accent": "orange"
     }
-  ]
+  ],
+  "audit": {
+    "headline": "Auditorias para destravar eficiencia, seguranca e escala.",
+    "subhead": "Mapeamos processos ponta a ponta, identificamos gargalos e riscos, e entregamos um plano claro de melhorias com priorizacao e ROI.",
+    "pillars": [
+      {
+        "title": "Processos e operacao",
+        "text": "Como o trabalho acontece hoje, onde perde tempo e onde quebra."
+      },
+      {
+        "title": "Sistemas e integracoes",
+        "text": "Fluxos entre ferramentas, APIs, planilhas e dados criticos."
+      },
+      {
+        "title": "Riscos e conformidade",
+        "text": "Acessos, dados sensiveis, trilhas e recomendacoes de seguranca."
+      }
+    ],
+    "steps": [
+      {
+        "title": "Diagnostico",
+        "text": "Entrevistas, levantamento e mapeamento do fluxo atual."
+      },
+      {
+        "title": "Auditoria",
+        "text": "Analise de riscos, gargalos e oportunidades de automacao."
+      },
+      {
+        "title": "Plano de acao",
+        "text": "Prioridades, esforco, impacto e proximos passos de implementacao."
+      }
+    ]
+  }
 }

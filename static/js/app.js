@@ -8,8 +8,58 @@ const DEFAULT_SITE = {
     subhead:
       "Desenvolvemos aplicações, sites, integrações e automações, além de mapear processos para encontrar gargalos, riscos e oportunidades de evolução digital.",
   },
-  services: [],
-  projects: [],
+  services: [
+    "Sites institucionais e comerciais",
+    "Aplicações web responsivas",
+    "Integrações via API",
+    "Automações para operações",
+    "Dashboards e relatórios",
+    "Consultoria de evolução digital",
+  ],
+  projects: [
+    {
+      name: "Fluxonland",
+      eyebrow: "Automação operacional",
+      description:
+        "Fluxos digitais, integrações e painéis para organizar processos, reduzir retrabalho e acelerar decisões.",
+      items: ["Integração entre sistemas", "Rotinas automáticas", "Dashboards de operação"],
+      accent: "amber",
+    },
+    {
+      name: "Hey Dev",
+      eyebrow: "Produtos e desenvolvimento",
+      description:
+        "Construção de sites, aplicações e ferramentas internas com método, documentação e evolução contínua.",
+      items: ["Aplicações web", "Portais comerciais", "Sistemas sob medida"],
+      accent: "violet",
+    },
+    {
+      name: "Lua Active",
+      eyebrow: "Inteligência aplicada",
+      description:
+        "Soluções inteligentes para atendimento, análise e produtividade usando tecnologia prática para o dia a dia.",
+      items: ["Assistentes digitais", "Análise de dados", "Atendimento automatizado"],
+      accent: "orange",
+    },
+  ],
+  audit: {
+    headline: "Auditorias para destravar eficiência, segurança e escala.",
+    subhead:
+      "Mapeamos processos ponta a ponta, identificamos gargalos e riscos, e entregamos um plano claro de melhorias com priorização e ROI.",
+    pillars: [
+      {
+        title: "Processos e operação",
+        text: "Como o trabalho acontece hoje, onde perde tempo e onde quebra.",
+      },
+      { title: "Sistemas e integrações", text: "Fluxos entre ferramentas, APIs, planilhas e dados críticos." },
+      { title: "Riscos e conformidade", text: "Acessos, dados sensíveis, trilhas e recomendações de segurança." },
+    ],
+    steps: [
+      { title: "Diagnóstico", text: "Entrevistas, levantamento e mapeamento do fluxo atual." },
+      { title: "Auditoria", text: "Análise de riscos, gargalos e oportunidades de automação." },
+      { title: "Plano de ação", text: "Prioridades, esforço, impacto e próximos passos de implementação." },
+    ],
+  },
 };
 
 function normalizeText(value) {
@@ -94,7 +144,7 @@ function Header() {
       </a>
       <nav aria-label="Navegação principal">
         <a href="#solucoes">Soluções</a>
-        <a href="#solucoes">Auditorias</a>
+        <a href="#auditorias">Auditorias</a>
         <a href="#projetos">Projetos</a>
         <a href="#metodo">Método</a>
         <a href="#contato">Contato</a>
@@ -134,6 +184,39 @@ function Hero() {
           <strong>Produtos web</strong>
           <span>sites, sistemas e dashboards</span>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Audit() {
+  const data = window.__CODERLAND_SITE__ || DEFAULT_SITE;
+  const audit = data.audit || DEFAULT_SITE.audit;
+
+  return (
+    <section className="section audit" id="auditorias">
+      <div className="audit-top">
+        <div>
+          <p className="kicker">Auditorias</p>
+          <h2>{audit.headline}</h2>
+          <p className="section-subhead">{audit.subhead}</p>
+        </div>
+        <div className="audit-steps" aria-label="Etapas da auditoria">
+          {(audit.steps || []).map((step, index) => (
+            <div className="audit-step" key={`${step.title}-${index}`}>
+              <strong>{step.title}</strong>
+              <span>{step.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="audit-pillars" aria-label="Frentes da auditoria">
+        {(audit.pillars || []).map((pillar) => (
+          <article className="audit-card" key={pillar.title}>
+            <h3>{pillar.title}</h3>
+            <p>{pillar.text}</p>
+          </article>
+        ))}
       </div>
     </section>
   );
@@ -406,6 +489,7 @@ function App() {
       <main>
         <Hero />
         <Services />
+        <Audit />
         <Projects />
         <Process />
         <Contact />

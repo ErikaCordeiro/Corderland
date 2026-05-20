@@ -475,17 +475,24 @@ footer p {
 }
 
 .section-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 30px;
+  display: grid;
+  gap: 12px;
   margin-bottom: 28px;
+  max-width: 980px;
 }
 
 .section-heading h2,
 .process-band h2,
 .contact h2 {
   font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.section-subhead {
+  margin: 0;
+  max-width: 820px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 1.05rem;
+  line-height: 1.55;
 }
 
 .service-grid {
@@ -500,6 +507,7 @@ footer p {
   gap: 16px;
   min-height: 94px;
   padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(240, 160, 43, 0.04));
 }
 
 .service-card span {
@@ -509,7 +517,7 @@ footer p {
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: rgba(255, 159, 28, 0.16);
+  background: rgba(240, 160, 43, 0.14);
   color: var(--gold);
   font-size: 1.5rem;
   font-weight: 700;
@@ -522,6 +530,66 @@ footer p {
 
 .projects-section {
   padding-top: 40px;
+}
+
+.audit-top {
+  display: grid;
+  grid-template-columns: 1fr 0.92fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.audit-steps {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(255, 214, 107, 0.14);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.audit-step {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.audit-step strong {
+  color: var(--gold);
+}
+
+.audit-step span {
+  color: rgba(255, 255, 255, 0.74);
+  line-height: 1.45;
+}
+
+.audit-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.audit-card {
+  border: 1px solid rgba(255, 214, 107, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 18px;
+}
+
+.audit-card h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1.22rem;
+}
+
+.audit-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+  line-height: 1.6;
 }
 
 .project-grid {
@@ -925,16 +993,21 @@ footer p {
   }
 
   .section-heading {
-    display: block;
+    max-width: none;
   }
 
   .service-grid,
-  .project-grid {
+  .project-grid,
+  .audit-pillars {
     grid-template-columns: 1fr;
   }
 
   .project-card {
     min-height: 0;
+  }
+
+  .audit-top {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -969,6 +1042,11 @@ footer p {
   .hero-copy h1 {
     font-size: 2.35rem;
     line-height: 1.08;
+  }
+
+  .section-heading h2 {
+    font-size: 2.05rem;
+    line-height: 1.1;
   }
 
   .hero-pill {
