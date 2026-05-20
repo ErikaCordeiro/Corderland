@@ -1,0 +1,43 @@
+{
+  "brand": "Coderland",
+  "whatsapp": {
+    "phoneDisplay": "(48) 98800-6788",
+    "waMe": "https://wa.me/5548988006788"
+  },
+  "hero": {
+    "pill": "Solucoes tecnologicas e auditorias para empresas",
+    "headline": "Coderland cria solucoes tecnologicas e auditorias para empresas.",
+    "subhead": "Desenvolvemos aplicacoes, sites, integracoes e automacoes, alem de mapear processos para encontrar gargalos, riscos e oportunidades de evolucao digital."
+  },
+  "services": [
+    "Sites institucionais e comerciais",
+    "Aplicacoes web responsivas",
+    "Integracoes via API",
+    "Automacoes para operacoes",
+    "Dashboards e relatorios",
+    "Consultoria de evolucao digital"
+  ],
+  "projects": [
+    {
+      "name": "Fluxonland",
+      "eyebrow": "Automacao operacional",
+      "description": "Fluxos digitais, integracoes e paineis para organizar processos, reduzir retrabalho e acelerar decisoes.",
+      "items": ["Integracao entre sistemas", "Rotinas automaticas", "Dashboards de operacao"],
+      "accent": "amber"
+    },
+    {
+      "name": "Hey Dev",
+      "eyebrow": "Produtos e desenvolvimento",
+      "description": "Construcao de sites, aplicacoes e ferramentas internas com metodo, documentacao e evolucao continua.",
+      "items": ["Aplicacoes web", "Portais comerciais", "Sistemas sob medida"],
+      "accent": "violet"
+    },
+    {
+      "name": "Lua Active",
+      "eyebrow": "Inteligencia aplicada",
+      "description": "Solucoes inteligentes para atendimento, analise e produtividade usando tecnologia pratica para o dia a dia.",
+      "items": ["Assistentes digitais", "Analise de dados", "Atendimento automatizado"],
+      "accent": "orange"
+    }
+  ]
+}
