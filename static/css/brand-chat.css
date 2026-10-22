@@ -1,0 +1,236 @@
+.logo-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 66% 24%, rgba(255, 222, 105, 0.22), transparent 24%),
+    linear-gradient(135deg, #421060, #67137a 52%, #34104f);
+  border: 2px solid var(--gold);
+  box-shadow:
+    0 0 16px rgba(255, 159, 28, 0.34),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.logo-code,
+.orbit,
+.dot {
+  position: absolute;
+  display: block;
+}
+
+.logo-code {
+  z-index: 3;
+  color: var(--gold);
+  font-size: 0.62rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.36);
+}
+
+.orbit {
+  border-radius: 999px;
+  border: 2px solid rgba(255, 209, 102, 0.9);
+}
+
+.orbit-one {
+  width: 23px;
+  height: 18px;
+  transform: rotate(-8deg);
+}
+
+.orbit-two {
+  width: 28px;
+  height: 26px;
+  border-style: dashed;
+  opacity: 0.92;
+  transform: rotate(30deg);
+}
+
+.dot {
+  z-index: 2;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffe86e, #df8d18);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.22);
+}
+
+.dot-a {
+  transform: translate(-12px, -3px);
+}
+
+.dot-b {
+  transform: translate(-5px, -12px);
+}
+
+.dot-c {
+  transform: translate(9px, -12px);
+}
+
+.dot-d {
+  transform: translate(13px, 2px);
+}
+
+.dot-e {
+  transform: translate(5px, 12px);
+}
+
+.dot-f {
+  transform: translate(-11px, 11px);
+}
+
+
+.site-chat {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 30;
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+}
+
+.chat-toggle {
+  min-width: 76px;
+  min-height: 58px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #1a0d04;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.34);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.chat-panel {
+  width: min(380px, calc(100vw - 28px));
+  overflow: hidden;
+  border: 1px solid rgba(255, 214, 107, 0.22);
+  border-radius: 8px;
+  background: #160b21;
+  box-shadow: var(--shadow);
+}
+
+.chat-panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--purple), #2a123d);
+}
+
+.chat-panel header div {
+  display: grid;
+  gap: 4px;
+}
+
+.chat-panel header strong {
+  color: var(--text);
+}
+
+.chat-panel header span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.chat-panel header button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.chat-messages {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  max-height: 330px;
+  min-height: 220px;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.chat-message {
+  max-width: 88%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  line-height: 1.45;
+}
+
+.chat-message p {
+  margin: 0;
+}
+
+.chat-message.bot {
+  justify-self: start;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.chat-message.user {
+  justify-self: end;
+  background: rgba(245, 154, 35, 0.22);
+  color: #fff4dc;
+}
+
+.chat-message a {
+  display: inline-flex;
+  margin-top: 10px;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.chat-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.chat-form input {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #100818;
+  color: var(--text);
+  padding: 12px;
+  outline: none;
+}
+
+.chat-form input:focus {
+  border-color: var(--orange);
+}
+
+.chat-form button {
+  border: 0;
+  border-radius: 8px;
+  background: var(--orange);
+  color: #1a0d04;
+  cursor: pointer;
+  font-weight: 900;
+  padding: 0 14px;
+}
+
+
+/* Official image supplied by the brand owner, preserved without cropping. */
+.logo-mark.logo-image {
+  display: block;
+  object-fit: contain;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}

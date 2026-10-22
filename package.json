@@ -1,0 +1,8 @@
+{
+  "name": "coderland-site",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "check": "node --check static/js/app.min.js"
+  }
+}

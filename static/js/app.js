@@ -1,66 +1,5 @@
-// JSX entrypoint (loaded via Babel in-browser)
-const DEFAULT_SITE = {
-  brand: "Coderland",
-  whatsapp: { phoneDisplay: "(48) 98800-6788", waMe: "https://wa.me/5548988006788" },
-  hero: {
-    pill: "Soluções tecnológicas e auditorias para empresas",
-    headline: "Coderland cria soluções tecnológicas e auditorias para empresas.",
-    subhead:
-      "Desenvolvemos aplicações, sites, integrações e automações, além de mapear processos para encontrar gargalos, riscos e oportunidades de evolução digital.",
-  },
-  services: [
-    "Sites institucionais e comerciais",
-    "Aplicações web responsivas",
-    "Integrações via API",
-    "Automações para operações",
-    "Dashboards e relatórios",
-    "Consultoria de evolução digital",
-  ],
-  projects: [
-    {
-      name: "Fluxonland",
-      eyebrow: "Automação operacional",
-      description:
-        "Fluxos digitais, integrações e painéis para organizar processos, reduzir retrabalho e acelerar decisões.",
-      items: ["Integração entre sistemas", "Rotinas automáticas", "Dashboards de operação"],
-      accent: "amber",
-    },
-    {
-      name: "Hey Dev",
-      eyebrow: "Produtos e desenvolvimento",
-      description:
-        "Construção de sites, aplicações e ferramentas internas com método, documentação e evolução contínua.",
-      items: ["Aplicações web", "Portais comerciais", "Sistemas sob medida"],
-      accent: "violet",
-    },
-    {
-      name: "Lua Active",
-      eyebrow: "Inteligência aplicada",
-      description:
-        "Soluções inteligentes para atendimento, análise e produtividade usando tecnologia prática para o dia a dia.",
-      items: ["Assistentes digitais", "Análise de dados", "Atendimento automatizado"],
-      accent: "orange",
-    },
-  ],
-  audit: {
-    headline: "Auditorias para destravar eficiência, segurança e escala.",
-    subhead:
-      "Mapeamos processos ponta a ponta, identificamos gargalos e riscos, e entregamos um plano claro de melhorias com priorização e ROI.",
-    pillars: [
-      {
-        title: "Processos e operação",
-        text: "Como o trabalho acontece hoje, onde perde tempo e onde quebra.",
-      },
-      { title: "Sistemas e integrações", text: "Fluxos entre ferramentas, APIs, planilhas e dados críticos." },
-      { title: "Riscos e conformidade", text: "Acessos, dados sensíveis, trilhas e recomendações de segurança." },
-    ],
-    steps: [
-      { title: "Diagnóstico", text: "Entrevistas, levantamento e mapeamento do fluxo atual." },
-      { title: "Auditoria", text: "Análise de riscos, gargalos e oportunidades de automação." },
-      { title: "Plano de ação", text: "Prioridades, esforço, impacto e próximos passos de implementação." },
-    ],
-  },
-};
+// React source. Compile with node scripts/build.cjs before preview or deployment.
+const DEFAULT_SITE = window.__CODERLAND_SITE__;
 
 function normalizeText(value) {
   return value
@@ -118,238 +57,7 @@ const chatStopWords = new Set([
 ]);
 
 function LogoMark() {
-  return (
-    <div className="logo-mark" aria-label="Símbolo da Coderland" role="img">
-      <span className="logo-code">&lt;/&gt;</span>
-      <span className="orbit orbit-one"></span>
-      <span className="orbit orbit-two"></span>
-      <i className="dot dot-a"></i>
-      <i className="dot dot-b"></i>
-      <i className="dot dot-c"></i>
-      <i className="dot dot-d"></i>
-      <i className="dot dot-e"></i>
-      <i className="dot dot-f"></i>
-    </div>
-  );
-}
-
-function Header() {
-  const data = window.__CODERLAND_SITE__ || DEFAULT_SITE;
-  const whatsappLink = data.whatsapp?.waMe || DEFAULT_SITE.whatsapp.waMe;
-  return (
-    <header className="site-header">
-      <a className="brand" href="#inicio" aria-label="Coderland">
-        <LogoMark />
-        <span>{data.brand || "Coderland"}</span>
-      </a>
-      <nav aria-label="Navegação principal">
-        <a href="#solucoes">Soluções</a>
-        <a href="#auditorias">Auditorias</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#metodo">Método</a>
-        <a href="#contato">Contato</a>
-      </nav>
-      <a className="header-action" href={whatsappLink} target="_blank" rel="noreferrer">
-        Falar agora
-      </a>
-    </header>
-  );
-}
-
-function Hero() {
-  const data = window.__CODERLAND_SITE__ || DEFAULT_SITE;
-  return (
-    <section className="hero" id="inicio">
-      <div className="hero-shape shape-one"></div>
-      <div className="hero-shape shape-two"></div>
-      <div className="hero-shape shape-three"></div>
-      <div className="hero-copy">
-        <p className="hero-pill">{data.hero?.pill}</p>
-        <h1>{data.hero?.headline}</h1>
-        <p>{data.hero?.subhead}</p>
-        <div className="hero-actions">
-          <a className="secondary-button" href="#projetos">Ver projetos</a>
-        </div>
-      </div>
-      <div className="hero-metrics" aria-label="Resumo das soluções Coderland">
-        <div>
-          <strong>Auditoria</strong>
-          <span>processos, riscos e oportunidades</span>
-        </div>
-        <div>
-          <strong>Automação</strong>
-          <span>rotinas, APIs e integrações</span>
-        </div>
-        <div>
-          <strong>Produtos web</strong>
-          <span>sites, sistemas e dashboards</span>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Audit() {
-  const data = window.__CODERLAND_SITE__ || DEFAULT_SITE;
-  const audit = data.audit || DEFAULT_SITE.audit;
-
-  return (
-    <section className="section audit" id="auditorias">
-      <div className="audit-top">
-        <div>
-          <p className="kicker">Auditorias</p>
-          <h2>{audit.headline}</h2>
-          <p className="section-subhead">{audit.subhead}</p>
-        </div>
-        <div className="audit-steps" aria-label="Etapas da auditoria">
-          {(audit.steps || []).map((step, index) => (
-            <div className="audit-step" key={`${step.title}-${index}`}>
-              <strong>{step.title}</strong>
-              <span>{step.text}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="audit-pillars" aria-label="Frentes da auditoria">
-        {(audit.pillars || []).map((pillar) => (
-          <article className="audit-card" key={pillar.title}>
-            <h3>{pillar.title}</h3>
-            <p>{pillar.text}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Services() {
-  const data = window.__CODERLAND_SITE__ || DEFAULT_SITE;
-  return (
-    <section className="section" id="solucoes">
-      <div className="section-heading">
-        <p className="kicker">O que vendemos</p>
-        <h2>Soluções tecnológicas e auditorias para empresas que precisam organizar, automatizar e crescer.</h2>
-      </div>
-      <div className="service-grid">
-        {(data.services || []).map((service) => (
-          <div className="service-card" key={service}>
-            <span aria-hidden="true">+</span>
-            <p>{service}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Projects() {
-  const data = window.__CODERLAND_SITE__ || DEFAULT_SITE;
-  return (
-    <section className="section projects-section" id="projetos">
-      <div className="section-heading">
-        <p className="kicker">Projetos principais</p>
-        <h2>Três frentes para vender, organizar e automatizar melhor.</h2>
-      </div>
-      <div className="project-grid">
-        {(data.projects || []).map((project) => (
-          <article className={`project-card ${project.accent}`} key={project.name}>
-            <div>
-              <p>{project.eyebrow}</p>
-              <h3>{project.name}</h3>
-              <span>{project.description}</span>
-            </div>
-            <ul>
-              {project.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Process() {
-  return (
-    <section className="process-band" id="metodo">
-      <div>
-        <p className="kicker">Método Coderland</p>
-        <h2>Diagnóstico, construção e evolução contínua.</h2>
-      </div>
-      <ol>
-        <li>
-          <strong>Mapeamos</strong>
-          <span>entendemos vendas, atendimento, gestão e operação.</span>
-        </li>
-        <li>
-          <strong>Construímos</strong>
-          <span>criamos a solução com backend, frontend e integrações.</span>
-        </li>
-        <li>
-          <strong>Evoluímos</strong>
-          <span>medimos, ajustamos e ampliamos conforme o uso real.</span>
-        </li>
-      </ol>
-    </section>
-  );
-}
-
-function Contact() {
-  const data = window.__CODERLAND_SITE__ || DEFAULT_SITE;
-  const whatsappLink = data.whatsapp?.waMe || DEFAULT_SITE.whatsapp.waMe;
-  const whatsappPhone = data.whatsapp?.phoneDisplay || DEFAULT_SITE.whatsapp.phoneDisplay;
-  const [sent, setSent] = React.useState(false);
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setSent(true);
-  }
-
-  return (
-    <section className="contact" id="contato">
-      <div>
-        <p className="kicker">Vamos construir</p>
-        <h2>Conte qual processo você quer organizar primeiro.</h2>
-        <p>
-          A Coderland pode criar o site, sistema, automação ou integração que sua empresa precisa para ganhar ritmo.
-        </p>
-        <a className="whatsapp-link" href={whatsappLink} target="_blank" rel="noreferrer">
-          Chamar no WhatsApp: {whatsappPhone}
-        </a>
-      </div>
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <label>
-          Nome
-          <input type="text" name="name" placeholder="Seu nome" />
-        </label>
-        <label>
-          Empresa
-          <input type="text" name="company" placeholder="Nome da empresa" />
-        </label>
-        <label>
-          Projeto
-          <select name="project" defaultValue="">
-            <option value="" disabled>Escolha uma solução</option>
-            <option>Fluxonland</option>
-            <option>Hey Dev</option>
-            <option>Lua Active</option>
-            <option>Projeto personalizado</option>
-          </select>
-        </label>
-        <label>
-          Mensagem
-          <textarea name="message" rows="4" placeholder="Descreva o que precisa automatizar ou vender melhor"></textarea>
-        </label>
-        <button type="submit">Enviar interesse</button>
-        {sent && (
-          <p className="form-success">
-            Interesse registrado. A próxima etapa é conectar este formulário ao WhatsApp, e-mail ou CRM da Coderland.
-          </p>
-        )}
-      </form>
-    </section>
-  );
+  return <img className="logo-mark logo-image" src="/static/images/brand/coderland-logo-64.png" srcSet="/static/images/brand/coderland-logo-64.png 1x, /static/images/brand/coderland-logo-128.png 2x" alt="Logo da Coderland" width="34" height="34" decoding="async"/>;
 }
 
 function SiteChat() {
@@ -363,6 +71,20 @@ function SiteChat() {
       text: "Olá, sou o assistente da Coderland. Posso responder sobre soluções, auditorias, automações, sites e projetos.",
     },
   ]);
+
+  const toggleRef = React.useRef(null);
+  const inputRef = React.useRef(null);
+  const logRef = React.useRef(null);
+  React.useEffect(() => {
+    if (!isOpen) return;
+    inputRef.current?.focus();
+    const close = e => { if (e.key === 'Escape') { setIsOpen(false); toggleRef.current?.focus(); } };
+    document.addEventListener('keydown', close);
+    return () => document.removeEventListener('keydown', close);
+  }, [isOpen]);
+  React.useEffect(() => {
+    if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
+  }, [messages, isOpen]);
 
   function findAnswer(question) {
     const normalizedQuestion = normalizeText(question);
@@ -422,7 +144,7 @@ function SiteChat() {
   return (
     <div className={`site-chat ${isOpen ? "open" : ""}`}>
       {isOpen && (
-        <section className="chat-panel" aria-label="Chat Coderland">
+        <section className="chat-panel" id="chat-panel" aria-label="Chat Coderland">
           <header>
             <div>
               <strong>Chat Coderland</strong>
@@ -432,7 +154,7 @@ function SiteChat() {
               ×
             </button>
           </header>
-          <div className="chat-messages">
+          <div ref={logRef} className="chat-messages" role="log" aria-live="polite" aria-relevant="additions">
             {messages.map((chatMessage, index) => (
               <div className={`chat-message ${chatMessage.from}`} key={`${chatMessage.from}-${index}`}>
                 <p>{chatMessage.text}</p>
@@ -447,6 +169,8 @@ function SiteChat() {
           <form className="chat-form" onSubmit={handleSubmit}>
             <input
               type="text"
+              ref={inputRef}
+              maxLength={600}
               value={message}
               onChange={(event) => setMessage(event.target.value)}
               placeholder="Digite sua dúvida"
@@ -456,51 +180,155 @@ function SiteChat() {
           </form>
         </section>
       )}
-      <button className="chat-toggle" type="button" onClick={() => setIsOpen((current) => !current)}>
+      <button ref={toggleRef} className="chat-toggle" aria-expanded={isOpen} aria-controls="chat-panel" type="button" onClick={() => setIsOpen((current) => !current)}>
         {isOpen ? "Fechar" : "Chat"}
       </button>
     </div>
   );
 }
 
-function App() {
-  const [site, setSite] = React.useState(DEFAULT_SITE);
 
-  React.useEffect(() => {
-    let cancelled = false;
-    fetch("/api/site")
-      .then((res) => (res.ok ? res.json() : DEFAULT_SITE))
-      .then((data) => {
-        if (cancelled) return;
-        window.__CODERLAND_SITE__ = data;
-        setSite(data);
-      })
-      .catch(() => {
-        window.__CODERLAND_SITE__ = DEFAULT_SITE;
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+const SITE = window.__CODERLAND_SITE__ || DEFAULT_SITE;
+const projectSlugs = ['fluxonland', 'hey-dev', 'lua-active', 'fitland'];
+const links = [['solucoes','Soluções'],['auditorias','Auditorias'],['projetos','Projetos'],['metodo','Método'],['contato','Contato']];
+const isProject = !!window.__PROJECT_SLUG__;
+const homeLink = (id) => `${isProject ? '/' : ''}#${id}`;
+const Arrow = () => <span aria-hidden="true">↗</span>;
 
-  return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <Services />
-        <Audit />
-        <Projects />
-        <Process />
-        <Contact />
-      </main>
-      <footer>
-        <span>{site.brand || "Coderland"}</span>
-        <p>Aplicações e sites que organizam o trabalho real.</p>
-      </footer>
-      <SiteChat />
-    </>
-  );
+function Icon({kind=0}) {
+  const shapes = [<><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01M8 13l-2 2 2 2m8-4 2 2-2 2"/></>,<><rect x="3" y="3" width="13" height="17" rx="2"/><rect x="13" y="10" width="8" height="12" rx="2"/><path d="M7 7h5M7 11h3"/></>,<><path d="M9 8H7a4 4 0 000 8h2m6-8h2a4 4 0 010 8h-2M8 12h8"/></>,<><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></>,<><path d="M4 3v18h18M8 16v-5m5 5V6m5 10v-7"/></>,<><path d="M12 3l9 5v8l-9 5-9-5V8zM3 8l9 5 9-5m-9 5v8"/></>];
+  return <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{shapes[kind%6]}</svg>;
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+function Header() {
+  const [open,setOpen] = React.useState(false);
+  const [active,setActive] = React.useState('');
+  const [scrolled,setScrolled] = React.useState(false);
+  const button = React.useRef(null);
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+    const observer = new IntersectionObserver(entries => entries.forEach(e => {if(e.isIntersecting)setActive(e.target.id);}),{rootMargin:'-15% 0px -55% 0px'});
+    document.querySelectorAll('main section[id]').forEach(s=>observer.observe(s));
+    return ()=>{window.removeEventListener('scroll',onScroll);observer.disconnect();};
+  },[]);
+  React.useEffect(()=>{
+    if(!open)return;
+    const focusTimer = setTimeout(() => document.querySelector('#main-nav a')?.focus(), 220);
+    const close = e=>{if(e.key==='Escape'){setOpen(false);button.current?.focus();}};
+    const outside = e=>{if(!e.target.closest('.site-header'))setOpen(false);};
+    document.addEventListener('keydown',close);document.addEventListener('click',outside);
+    return ()=>{clearTimeout(focusTimer);document.removeEventListener('keydown',close);document.removeEventListener('click',outside);};
+  },[open]);
+  return <header className={`site-header ${scrolled?'scrolled':''}`}><div className="header-inner">
+    <a className="brand" href={homeLink('inicio')} aria-label="Coderland — início"><LogoMark/><span>Coderland<span className="brand-period">.</span></span></a>
+    <nav id="main-nav" className={open?'expanded':''} aria-label="Navegação principal">{links.map(([id,label])=><a key={id} href={homeLink(id)} aria-current={active===id?'location':undefined} onClick={()=>setOpen(false)}>{label}</a>)}</nav>
+    <a className="header-action" href={SITE.whatsapp.waMe} target="_blank" rel="noopener noreferrer">Falar agora <Arrow/></a>
+    <button ref={button} className="menu-toggle" aria-label={open?'Fechar menu':'Abrir menu'} aria-controls="main-nav" aria-expanded={open} onClick={()=>setOpen(!open)}><span/><span/></button>
+  </div></header>;
+}
+
+function TechVisual() {
+  return <div className="tech-visual" role="img" aria-label="Composição conceitual: estratégia, sistemas e dados conectados a um núcleo de tecnologia">
+    <svg className="tech-lines" viewBox="0 0 540 500" fill="none" aria-hidden="true"><defs><linearGradient id="beam"><stop stopColor="#A875F1" stopOpacity=".1"/><stop offset=".5" stopColor="#A875F1"/><stop offset="1" stopColor="#F3B334" stopOpacity=".2"/></linearGradient></defs><ellipse cx="270" cy="250" rx="215" ry="125" transform="rotate(-30 270 250)" stroke="#A875F1" strokeOpacity=".18"/><ellipse cx="270" cy="250" rx="215" ry="125" transform="rotate(30 270 250)" stroke="#A875F1" strokeOpacity=".18"/><path d="M90 160h70l110 90 110-90h70M80 350h90l100-100 100 100h80M270 65v370" stroke="url(#beam)" strokeWidth="1.5"/><circle cx="270" cy="250" r="154" stroke="#A875F1" strokeOpacity=".12" strokeDasharray="3 9"/><circle cx="270" cy="65" r="4" fill="#F3B334"/><circle cx="90" cy="160" r="4" fill="#A875F1"/><circle cx="450" cy="350" r="4" fill="#A875F1"/></svg>
+    <div className="tech-core"><span className="core-code">&lt;/&gt;</span><small>CODERLAND</small></div>
+    <div className="tech-label label-one"><Icon kind={5}/><div><small>O ponto de partida</small><strong>Estratégia</strong></div></div>
+    <div className="tech-label label-two"><Icon kind={2}/><div><small>Tudo conectado</small><strong>Integração</strong></div></div>
+    <div className="tech-label label-three"><Icon kind={3}/><div><small>Menos tarefas. Mais valor.</small><strong>Automação</strong></div></div>
+    <span className="visual-footnote"><i/> Ideias conectadas. Negócios em evolução.</span>
+  </div>;
+}
+
+function Hero() {
+  return <section className="hero" id="inicio"><div className="hero-inner wrap"><div className="hero-copy"><p className="kicker"><span className="tiny-line"/> {SITE.hero.pill}</p><h1>Tecnologia que <em>transforma</em> negócios.</h1><p className="hero-description">{SITE.hero.subhead}</p><div className="hero-actions"><a className="primary-button" href="#contato">Iniciar um projeto <Arrow/></a><a className="text-link" href="#solucoes">Explorar soluções <span aria-hidden="true">↓</span></a></div><p className="hero-signature"><span/> Da estratégia à próxima versão do seu negócio.</p></div><TechVisual/></div><div className="hero-bottom wrap"><span>DESENVOLVIMENTO COM PROPÓSITO</span><div><span>Software sob medida</span><i/><span>Automação inteligente</span><i/><span>Evolução digital</span></div><a href="#solucoes" aria-label="Conhecer soluções">↓</a></div></section>;
+}
+
+const serviceDescriptions = [
+  ['Sua presença digital com clareza, identidade e foco no seu negócio.','Apresentar. Conectar. Vender.'],
+  ['Aplicações que acompanham sua operação em qualquer tamanho de tela.','Uma experiência em cada dispositivo.'],
+  ['Conecte ferramentas e mantenha seus fluxos de informação alinhados.','Sistemas que trabalham juntos.'],
+  ['Transforme tarefas repetitivas em rotinas digitais para sua operação.','Mais tempo para o que importa.'],
+  ['Organize informações em painéis e relatórios para apoiar decisões.','Dados com contexto.'],
+  ['Encontre caminhos de melhoria alinhados aos desafios da sua empresa.','Clareza para o próximo passo.']
+];
+function SectionHeading({number,label,title,description}) {return <div className="section-heading"><p className="kicker"><span>{number} /</span> {label}</p><h2>{title}</h2>{description&&<p className="section-subhead">{description}</p>}</div>;}
+function Services() {
+  return <section className="section wrap" id="solucoes"><div className="split-heading"><SectionHeading number="01" label="Soluções" title={<>Complexidade resolvida.<br/><em>Possibilidades ampliadas.</em></>}/><p className="section-subhead">Tecnologia que se adapta à sua empresa.<br/>Do primeiro site aos processos que sustentam sua operação.</p></div><div className="service-grid">{SITE.services.map((service,i)=><article className="service-card" key={service}><div className="card-top"><span className="service-icon"><Icon kind={i}/></span><span className="card-index">0{i+1}</span></div><h3>{service}</h3><p>{serviceDescriptions[i]?.[0]}</p><div className="service-bottom"><small>{serviceDescriptions[i]?.[1]}</small><a href={`#contato`} aria-label={`Conversar sobre ${service}`}><Arrow/></a></div></article>)}</div></section>;
+}
+
+function Audit() {
+  return <section className="audit-shell" id="auditorias"><div className="section wrap audit-layout"><div><SectionHeading number="02" label="Auditorias" title={<>Antes de acelerar,<br/><em>entenda o caminho.</em></>}/><p className="section-subhead">{SITE.audit.subhead}</p><div className="audit-pillars">{SITE.audit.pillars.map((p,i)=><article key={p.title}><span>0{i+1}</span><div><h3>{p.title}</h3><p>{p.text}</p></div></article>)}</div><a className="text-link" href="#contato">Conversar sobre uma auditoria <Arrow/></a></div><div className="audit-dossier"><div className="dossier-heading"><span>CODERLAND / AUDITORIA</span><Icon kind={5}/></div><div className="dossier-graphic" aria-hidden="true"><svg viewBox="0 0 300 190" fill="none"><path d="M150 20l60 34v68l-60 35-60-35V54z" stroke="#A875F1" strokeWidth="1.5"/><path d="M150 46l38 22v43l-38 22-38-22V68z" stroke="#A875F1" strokeOpacity=".45"/><path d="M136 88l10 10 22-25" stroke="#F3B334" strokeWidth="3" strokeLinecap="round"/><path d="M30 88h60m120 0h60M150 0v20m0 137v33" stroke="#A875F1" strokeOpacity=".35"/><circle cx="30" cy="88" r="4" fill="#A875F1"/><circle cx="270" cy="88" r="4" fill="#F3B334"/></svg></div><p className="dossier-title">Uma visão completa.<br/>Um plano claro.</p><ol className="audit-steps">{SITE.audit.steps.map((s,i)=><li key={s.title}><span>0{i+1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div><span aria-hidden="true">↗</span></li>)}</ol><p className="dossier-note">Processos · Sistemas · Riscos · Oportunidades</p></div></div></section>;
+}
+
+function FitlandBrand() {
+  return <div className="fitland-brand" aria-label="Fitland"><span className="fitland-mark" aria-hidden="true">F</span><strong>FITLAND</strong></div>;
+}
+function FitlandVisual({project}) {
+  return <figure className="project-visual visual-fitland">
+    <span className="fitland-art-label" aria-hidden="true">MOVIMENTO<br/>COM DIREÇÃO.</span>
+    <svg className="fitland-dumbbell" viewBox="0 0 120 120" fill="none" aria-hidden="true"><path d="M35 85l50-50M22 72l26 26M15 79l26 26M72 22l26 26M79 15l26 26" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/></svg>
+    <div className="fitland-device"><div className="fitland-device-camera" aria-hidden="true"/><div className="fitland-screen"><FitlandBrand/><img src={project.capture.src} width={project.capture.width} height={project.capture.height} alt={project.capture.alt} loading={isProject?'eager':'lazy'} decoding="async"/><span className="fitland-screen-caption">PAINEL DE ATIVIDADE / RECORTE REAL</span></div></div>
+    <span className="fitland-art-caption" aria-hidden="true">Treinos. Pessoas. Tecnologia.</span>
+    <figcaption>Mockup ilustrativo · captura real do Fitland</figcaption>
+  </figure>;
+}
+function ProjectVisual({index}) {
+  if (SITE.projects[index].slug === 'fitland') return <FitlandVisual project={SITE.projects[index]}/>;
+  return <figure className={`project-visual visual-${index}`}><div className="project-art" aria-hidden="true">
+    {index===0?<><div className="flow-node node-source"><Icon kind={2}/><span>Sistemas</span></div><div className="flow-path"/><div className="flow-node node-center"><Icon kind={3}/><strong>Fluxonland</strong><span>Conectar → Automatizar</span></div><div className="flow-node node-data"><Icon kind={4}/><span>Operação</span></div><div className="flow-mini"><i/><i/><i/><i/><i/></div></>:index===1?<><div className="dev-window"><div className="window-chrome"><i/><i/><i/><span>hey dev / possibilidades</span></div><div className="dev-canvas"><span className="dev-symbol">&lt;<b>/</b>&gt;</span><span>Ideia. Código. Produto.</span><div className="dev-blocks"><i/><i/><i/></div></div></div><div className="dev-chip">web · sistemas · portais</div></>:<><div className="lua-moon"><span/></div><div className="lua-orbit"/><span className="lua-word">lua<span>active</span></span><div className="lua-tag"><i/> Inteligência em movimento</div></>}
+    </div><figcaption>Representação conceitual · {SITE.projects[index].name}</figcaption></figure>;
+}
+function Projects() {
+  return <section className="section wrap projects-section" id="projetos"><div className="split-heading"><SectionHeading number="03" label="Projetos & possibilidades" title={<>Ideias que ganham forma.<br/><em>Tecnologia que faz sentido.</em></>}/><p className="section-subhead">Projetos que conectam tecnologia aos desafios reais do seu negócio.</p></div><div className={`project-grid ${SITE.projects.length===4?'has-four':''}`}>{SITE.projects.map((p,i)=><article className={`project-card project-${i}`} key={p.name}><a className="project-image-link" href={`/projetos/${projectSlugs[i]}`} aria-label={`Conhecer ${p.name}`}><ProjectVisual index={i}/></a><div className="project-content"><p className="kicker">{p.eyebrow}</p><h3>{p.name}</h3><p>{p.description}</p><ul>{p.items.map(item=><li key={item}>{item}</li>)}</ul><a className="text-link" href={`/projetos/${projectSlugs[i]}`}>{p.slug==='fitland'?'Conhecer projeto':'Conhecer o projeto'} <Arrow/></a></div></article>)}</div></section>;
+}
+const method = [['Mapeamos','Entendemos vendas, atendimento, gestão e operação.','Contexto antes de código.'],['Construímos','Criamos a solução com backend, frontend e integrações.','Estratégia que vira entrega.'],['Evoluímos','Medimos, ajustamos e ampliamos conforme o uso real.','O próximo passo nasce do uso.']];
+function Process() {
+  return <section className="section wrap process-section" id="metodo"><SectionHeading number="04" label="Método Coderland" title={<>Boas soluções começam<br/><em>com as perguntas certas.</em></>}/><ol className="process-timeline">{method.map(([title,text,note],i)=><li key={title}><div className="step-marker"><span>0{i+1}</span><i/></div><h3>{title}</h3><p>{text}</p><small>{note}</small></li>)}</ol></section>;
+}
+function Contact() {
+  const [prepared,setPrepared] = React.useState('');
+  const [error,setError] = React.useState('');
+  function submit(e) {
+    e.preventDefault(); setError('');
+    try {
+      const values=new FormData(e.currentTarget);
+      const message=`Olá, Coderland! Sou ${values.get('name').trim()}${values.get('company').trim()?` da empresa ${values.get('company').trim()}`:''}.\nInteresse: ${values.get('project')}.\n\n${values.get('message').trim()}`;
+      if(!values.get('name').trim()||!values.get('message').trim()){setError('Preencha seu nome e uma mensagem para continuar.');return;}
+      setPrepared(`${SITE.whatsapp.waMe}?text=${encodeURIComponent(message)}`);
+    }catch{setError('Não foi possível preparar a mensagem. Você pode usar o WhatsApp ao lado.');}
+  }
+  return <section className="contact-shell" id="contato"><div className="section wrap contact"><div><p className="kicker"><span>05 /</span> Vamos construir</p><h2>Seu próximo passo<br/>merece <em>boa tecnologia.</em></h2><p className="section-subhead">Conte o que sua empresa precisa resolver. Vamos encontrar um caminho para transformar esse desafio em uma solução.</p><a className="primary-button" href={SITE.whatsapp.waMe} target="_blank" rel="noopener noreferrer">Conversar no WhatsApp <Arrow/></a><a className="phone-link" href={SITE.whatsapp.waMe} target="_blank" rel="noopener noreferrer">{SITE.whatsapp.phoneDisplay}</a><p className="contact-note">Estratégia, desenvolvimento e evolução.<br/>Com atenção ao que faz diferença para você.</p></div><form className="contact-form" onSubmit={submit} onChange={()=>{setPrepared('');setError('');}}><h3>Vamos falar sobre sua ideia?</h3><p>Prepare sua mensagem e continue pelo WhatsApp.</p><div className="form-row"><label>Nome <span aria-hidden="true">*</span><input name="name" autoComplete="name" placeholder="Como podemos chamar você?" required maxLength="120"/></label><label>Empresa<input name="company" autoComplete="organization" placeholder="Nome da empresa" maxLength="160"/></label></div><label>Interesse <span aria-hidden="true">*</span><select name="project" required defaultValue=""><option value="" disabled>Selecione uma solução</option>{SITE.projects.map(p=><option key={p.name}>{p.name}</option>)}<option>Auditoria</option><option>Projeto personalizado</option></select></label><label>Mensagem <span aria-hidden="true">*</span><textarea name="message" rows="4" placeholder="Qual desafio você quer resolver?" required maxLength="3000"/></label><button type="submit" className="primary-button">Preparar mensagem <Arrow/></button><div aria-live="polite">{prepared&&<div className="form-success"><p>Mensagem pronta. Revise e envie na conversa do WhatsApp.</p><a className="text-link" href={prepared} target="_blank" rel="noopener noreferrer">Continuar no WhatsApp <Arrow/></a></div>}{error&&<p className="form-error" role="alert">{error}</p>}</div><small>Nenhuma mensagem é enviada automaticamente.</small></form></div></section>;
+}
+function Footer() {
+  return <footer className="wrap"><div className="footer-top"><a className="brand" href={homeLink('inicio')}><LogoMark/><span>Coderland.</span></a><p>Tecnologia com propósito.<br/>Soluções para o mundo real.</p><a className="text-link" href={homeLink('inicio')}>Voltar ao topo ↑</a></div><div className="footer-bottom"><p>© {new Date().getFullYear()} Coderland. Todos os direitos reservados.</p><nav aria-label="Navegação do rodapé">{links.map(([id,label])=><a key={id} href={homeLink(id)}>{label}</a>)}</nav></div></footer>;
+}
+const projectNeeds = ['Conectar sistemas e organizar rotinas operacionais que hoje exigem trabalho repetitivo.','Transformar necessidades comerciais e operacionais em aplicações, sites e ferramentas internas.','Apoiar atendimento, análise e produtividade com inteligência aplicada ao dia a dia.'];
+function ProjectPage() {
+  const index=projectSlugs.indexOf(window.__PROJECT_SLUG__); const p=SITE.projects[index];
+  if (p.slug === 'fitland') return <FitlandPage project={p} index={index}/>;
+  return <><section className="section wrap project-detail" id="inicio"><a className="text-link back-link" href="/#projetos">← Todos os projetos</a><div className="detail-hero"><div><p className="kicker">{p.eyebrow}</p><h1>{p.name}<span>.</span></h1><p className="section-subhead">{p.description}</p><a className="primary-button" href="#contato">Criar uma solução semelhante <Arrow/></a></div><ProjectVisual index={index}/></div></section><section className="section wrap detail-overview"><div><p className="kicker">O contexto</p><h2>Uma necessidade real.<br/><em>Um caminho digital.</em></h2><p>{projectNeeds[index]}</p></div><div><p className="kicker">A solução</p><h2>{p.name}</h2><p>{p.description}</p><ul>{p.items.map(item=><li key={item}><Icon kind={index}/><span>{item}</span></li>)}</ul></div></section><section className="wrap detail-note"><p>Sobre esta apresentação</p><span>A ilustração é conceitual e não representa uma tela do produto. Para conhecer o escopo e as possibilidades para sua empresa, converse com a Coderland.</span></section><Contact/></>;
+}
+function FitlandPage({project:p,index}) {
+  return <>
+    <section className="section wrap project-detail fitland-detail" id="inicio">
+      <a className="text-link back-link" href="/#projetos">← Todos os projetos</a>
+      <div className="detail-hero"><div><p className="kicker">{p.eyebrow}</p><h1>{p.name}<span>.</span></h1><p className="fitland-presentation">Tecnologia que transforma o acompanhamento de treinos.</p><p className="section-subhead">{p.description}</p><a className="primary-button" href="#contato">Criar uma solução semelhante <Arrow/></a><a className="text-link fitland-visit" href={p.url} target="_blank" rel="noopener noreferrer">Visitar Fitland <Arrow/></a></div><ProjectVisual index={index}/></div>
+    </section>
+    <section className="section wrap detail-overview"><div><p className="kicker">O desafio</p><h2>Mais organização.<br/><em>Mais proximidade.</em></h2><p>{p.need}</p></div><div><p className="kicker">A solução</p><h2>Uma rotina conectada.</h2><p>{p.solution}</p></div></section>
+    <section className="section wrap fitland-features"><SectionHeading number="01" label="O aplicativo" title={<>Do planejamento<br/><em>ao acompanhamento.</em></>}/><div className="service-grid">{p.features.map((f,i)=><article className="service-card" key={f.title}><div className="card-top"><span className="service-icon"><Icon kind={i}/></span><span className="card-index">0{i+1}</span></div><h3>{f.title}</h3><p>{f.text}</p></article>)}</div></section>
+    <section className="section wrap fitland-gallery"><div><p className="kicker">02 / Dentro do Fitland</p><h2>Uma janela<br/><em>para a plataforma.</em></h2><p className="section-subhead">Recorte real do painel de atividade na versão mobile. O estado sem dados faz parte da aplicação; a captura não contém informações pessoais.</p><a className="text-link" href={p.url} target="_blank" rel="noopener noreferrer">Conhecer a aplicação <Arrow/></a></div><figure><a href={p.capture.src} target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura real do painel do Fitland"><img src={p.capture.src} width={p.capture.width} height={p.capture.height} alt={p.capture.alt} loading="lazy" decoding="async"/></a><figcaption>Captura real · painel de atividade · versão mobile</figcaption></figure></section>
+    <section className="wrap fitland-tech"><p className="kicker">03 / Tecnologias do projeto</p><ul>{p.technologies.map(t=><li key={t}>{t}</li>)}</ul></section>
+    <section className="wrap detail-note"><p>Sobre esta apresentação</p><span>O smartphone é um mockup ilustrativo com um recorte real do Fitland. As funcionalidades apresentadas foram identificadas na aplicação e no código do projeto. O acesso a cada área depende do perfil e dos módulos habilitados.</span></section>
+    <Contact/>
+  </>;
+}
+
+function App() {
+  React.useEffect(()=>{
+    const observer = new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('revealed');observer.unobserve(entry.target);}}),{threshold:.08});
+    document.querySelectorAll('.service-card,.project-card,.process-timeline li,.audit-dossier').forEach(el=>{el.classList.add('reveal');observer.observe(el);});
+    return ()=>observer.disconnect();
+  },[]);
+  return <><a className="skip-link" href="#main-content">Pular para o conteúdo</a><Header/><main id="main-content">{isProject?<ProjectPage/>:<><Hero/><Services/><Audit/><Projects/><Process/><Contact/></>}</main><Footer/><SiteChat/></>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);

@@ -5,70 +5,140 @@
     "waMe": "https://wa.me/5548988006788"
   },
   "hero": {
-    "pill": "Solucoes tecnologicas e auditorias para empresas",
-    "headline": "Coderland cria solucoes tecnologicas e auditorias para empresas.",
-    "subhead": "Desenvolvemos aplicacoes, sites, integracoes e automacoes, alem de mapear processos para encontrar gargalos, riscos e oportunidades de evolucao digital."
+    "pill": "TECNOLOGIA, ESTRATÉGIA & INOVAÇÃO",
+    "headline": "Tecnologia que transforma negócios.",
+    "subhead": "Desenvolvemos soluções digitais sob medida, automações e auditorias para empresas que buscam eficiência, segurança e crescimento."
   },
   "services": [
     "Sites institucionais e comerciais",
-    "Aplicacoes web responsivas",
-    "Integracoes via API",
-    "Automacoes para operacoes",
-    "Dashboards e relatorios",
-    "Consultoria de evolucao digital"
+    "Aplicações web responsivas",
+    "Integrações via API",
+    "Automações para operações",
+    "Dashboards e relatórios",
+    "Consultoria de evolução digital"
   ],
   "projects": [
     {
       "name": "Fluxonland",
-      "eyebrow": "Automacao operacional",
-      "description": "Fluxos digitais, integracoes e paineis para organizar processos, reduzir retrabalho e acelerar decisoes.",
-      "items": ["Integracao entre sistemas", "Rotinas automaticas", "Dashboards de operacao"],
+      "eyebrow": "Automação operacional",
+      "description": "Fluxos digitais, integrações e painéis para organizar processos, reduzir retrabalho e acelerar decisões.",
+      "items": [
+        "Integração entre sistemas",
+        "Rotinas automáticas",
+        "Dashboards de operação"
+      ],
       "accent": "amber"
     },
     {
       "name": "Hey Dev",
       "eyebrow": "Produtos e desenvolvimento",
-      "description": "Construcao de sites, aplicacoes e ferramentas internas com metodo, documentacao e evolucao continua.",
-      "items": ["Aplicacoes web", "Portais comerciais", "Sistemas sob medida"],
+      "description": "Construção de sites, aplicações e ferramentas internas com método, documentação e evolução contínua.",
+      "items": [
+        "Aplicações web",
+        "Portais comerciais",
+        "Sistemas sob medida"
+      ],
       "accent": "violet"
     },
     {
       "name": "Lua Active",
-      "eyebrow": "Inteligencia aplicada",
-      "description": "Solucoes inteligentes para atendimento, analise e produtividade usando tecnologia pratica para o dia a dia.",
-      "items": ["Assistentes digitais", "Analise de dados", "Atendimento automatizado"],
+      "eyebrow": "Inteligência aplicada",
+      "description": "Soluções inteligentes para atendimento, análise e produtividade usando tecnologia prática para o dia a dia.",
+      "items": [
+        "Assistentes digitais",
+        "Análise de dados",
+        "Atendimento automatizado"
+      ],
       "accent": "orange"
+    },
+    {
+      "name": "Fitland",
+      "slug": "fitland",
+      "eyebrow": "Fitness & Tecnologia",
+      "presentationTitle": "Fitland — Tecnologia que transforma o acompanhamento de treinos.",
+      "description": "O Fitland é uma plataforma digital desenvolvida para modernizar a gestão de treinos e aproximar personal trainers de seus alunos, oferecendo uma experiência prática, organizada e intuitiva.",
+      "items": [
+        "Gestão de alunos",
+        "Planejamento de treinos",
+        "Calendário e acompanhamento"
+      ],
+      "accent": "fitland",
+      "url": "https://fitland.up.railway.app",
+      "need": "Alunos, treinos e registros precisam estar conectados para que o acompanhamento não se perca entre ferramentas e informações dispersas.",
+      "solution": "Uma plataforma com áreas para personal trainers e alunos, organização de treinos, calendário e registros de execução. Os painéis reúnem informações para apoiar o acompanhamento da rotina.",
+      "features": [
+        {
+          "title": "Gestão de alunos",
+          "text": "Cadastro, listagem e edição de alunos na área do personal."
+        },
+        {
+          "title": "Planejamento de treinos",
+          "text": "Organização de treinos com exercícios e parâmetros de execução."
+        },
+        {
+          "title": "Acompanhamento de atividades",
+          "text": "Registro de séries, cargas e repetições, com histórico de execução."
+        },
+        {
+          "title": "Calendário de treinos",
+          "text": "Visualização de treinos programados e compromissos por período."
+        },
+        {
+          "title": "Experiência mobile",
+          "text": "Layouts adaptáveis para consultar a plataforma em telas menores."
+        },
+        {
+          "title": "Painéis de acompanhamento",
+          "text": "Visão geral da plataforma e painéis para acompanhamento da operação."
+        }
+      ],
+      "technologies": [
+        "React",
+        "Vite",
+        "JavaScript",
+        "CSS",
+        "Python",
+        "FastAPI",
+        "SQLAlchemy",
+        "PostgreSQL"
+      ],
+      "capture": {
+        "src": "/static/images/fitland/painel-atividade-mobile.jpg",
+        "width": 337,
+        "height": 378,
+        "alt": "Recorte real do painel Atividade da plataforma do Fitland, no mobile, com estado sem dados disponíveis."
+      }
     }
   ],
   "audit": {
-    "headline": "Auditorias para destravar eficiencia, seguranca e escala.",
-    "subhead": "Mapeamos processos ponta a ponta, identificamos gargalos e riscos, e entregamos um plano claro de melhorias com priorizacao e ROI.",
+    "headline": "Auditorias para destravar eficiência, segurança e escala.",
+    "subhead": "Mapeamos processos ponta a ponta, identificamos gargalos e riscos, e entregamos um plano claro de melhorias com priorização e ROI.",
     "pillars": [
       {
-        "title": "Processos e operacao",
+        "title": "Processos e operação",
         "text": "Como o trabalho acontece hoje, onde perde tempo e onde quebra."
       },
       {
-        "title": "Sistemas e integracoes",
-        "text": "Fluxos entre ferramentas, APIs, planilhas e dados criticos."
+        "title": "Sistemas e integrações",
+        "text": "Fluxos entre ferramentas, APIs, planilhas e dados críticos."
       },
       {
         "title": "Riscos e conformidade",
-        "text": "Acessos, dados sensiveis, trilhas e recomendacoes de seguranca."
+        "text": "Acessos, dados sensíveis, trilhas e recomendações de segurança."
       }
     ],
     "steps": [
       {
-        "title": "Diagnostico",
+        "title": "Diagnóstico",
         "text": "Entrevistas, levantamento e mapeamento do fluxo atual."
       },
       {
         "title": "Auditoria",
-        "text": "Analise de riscos, gargalos e oportunidades de automacao."
+        "text": "Análise de riscos, gargalos e oportunidades de automação."
       },
       {
-        "title": "Plano de acao",
-        "text": "Prioridades, esforco, impacto e proximos passos de implementacao."
+        "title": "Plano de ação",
+        "text": "Prioridades, esforço, impacto e próximos passos de implementação."
       }
     ]
   }

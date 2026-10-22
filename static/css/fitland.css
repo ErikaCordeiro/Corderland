@@ -1,0 +1,55 @@
+/* Fitland uses the existing portfolio composition and brand tokens. */
+.project-grid.has-four { grid-template-columns:repeat(2,minmax(0,1fr)); gap:44px 28px; }
+.project-3 .kicker { color:var(--purple-soft); }
+.visual-fitland { background:radial-gradient(ellipse at 70% 35%,#6333a563,transparent 65%),#1b102a; }
+.fitland-art-label { position:absolute; top:14%; left:7%; font-size:clamp(10px,1.2vw,18px); line-height:1.5; letter-spacing:.13em; color:#c6b0df; }
+.fitland-dumbbell { position:absolute; color:var(--gold); width:24%; height:24%; left:9%; top:43%; opacity:.65; transform:rotate(-8deg); }
+.fitland-device { position:absolute; top:7%; bottom:12%; width:41%; left:46%; padding:23px 8px 13px; background:#08080b; border:2px solid #796285; border-radius:28px; box-shadow:14px 24px 45px #0008,inset 0 0 0 3px #1a1522; transform:rotate(9deg); transition:transform .35s; }
+.project-image-link:hover .fitland-device { transform:translateY(-5px) rotate(6deg); }
+.fitland-device-camera { position:absolute; width:22%; height:5px; border-radius:10px; top:10px; left:39%; background:#302735; }
+.fitland-screen { height:100%; overflow:hidden; border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; background:#08090b; }
+.fitland-screen img { display:block; width:100%; height:auto; max-height:70%; object-fit:contain; }
+.fitland-brand { display:flex; align-items:center; justify-content:center; gap:8px; color:white; font-size:12px; letter-spacing:.18em; }
+.fitland-mark { width:25px; height:25px; display:grid; place-items:center; font-weight:950; font-style:italic; color:#fff; background:linear-gradient(135deg,#bba3ff,#6d28d9); clip-path:polygon(0 0,100% 0,68% 37%,68% 100%,38% 100%,38% 48%,0 70%); }
+.fitland-screen-caption { font-size:5px; letter-spacing:.1em; color:#c6b3d7; text-align:center; }
+.fitland-art-caption { position:absolute; bottom:14%; left:7%; font-size:9px; max-width:29%; line-height:1.8; color:#d4b6f5; }
+.fitland-detail .detail-hero h1 { margin-bottom:15px; }
+.fitland-presentation { font-size:clamp(21px,2.2vw,30px); color:#e7d6f8; line-height:1.4; letter-spacing:-.025em; margin-bottom:20px; max-width:470px; }
+.fitland-detail .fitland-visit { display:flex; justify-content:flex-start; width:fit-content; margin-top:14px; }
+.fitland-features { border-top:1px solid var(--line); }
+.fitland-features .section-heading { margin-bottom:36px; }
+.fitland-features .service-card { background:#a875f104; }
+.fitland-gallery { border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; }
+.fitland-gallery .section-subhead { margin-top:25px; }
+.fitland-gallery .text-link { margin-top:18px; }
+.fitland-gallery figure { max-width:385px; width:100%; margin:auto; padding:20px; border:1px solid var(--line); background:#160e20; border-radius:10px; }
+.fitland-gallery img { display:block; width:100%; height:auto; border-radius:6px; }
+.fitland-gallery figcaption { color:var(--muted); font-size:10px; margin-top:14px; }
+.fitland-tech { padding-block:35px 60px; border-top:1px solid var(--line); }
+.fitland-tech ul { display:flex; flex-wrap:wrap; gap:10px; }
+.fitland-tech li { padding:9px 15px; font-size:12px; color:#d3c3e2; border:1px solid var(--line); border-radius:5px; }
+@media(max-width:1100px) { .fitland-gallery { gap:50px; } .fitland-screen { gap:8px; } .fitland-brand { font-size:9px; } .fitland-mark { width:20px; height:20px; } }
+@media(max-width:700px) {
+  .project-grid.has-four { grid-template-columns:1fr; gap:42px; }
+  .fitland-gallery { grid-template-columns:1fr; gap:35px; }
+  .fitland-art-label { font-size:12px; }
+  .fitland-art-caption { font-size:8px; }
+  .fitland-device { border-radius:22px; padding:20px 6px 10px; }
+  .fitland-device-camera { top:8px; height:4px; }
+  .fitland-screen { gap:8px; }
+  .fitland-brand { font-size:8px; gap:5px; }
+  .fitland-mark { width:18px; height:18px; }
+  .fitland-screen-caption { font-size:4px; }
+  .fitland-tech { padding-bottom:40px; }
+}
+@media(max-width:390px) {
+  .fitland-art-label { font-size:10px; }
+  .fitland-art-caption { font-size:7px; }
+  .fitland-device { border-radius:19px; padding:17px 5px 8px; }
+  .fitland-screen { gap:6px; border-radius:8px; }
+  .fitland-mark { width:14px; height:14px; }
+  .fitland-brand { font-size:7px; }
+  .fitland-presentation { font-size:22px; }
+  .fitland-gallery figure { padding:13px; }
+}
+@media(prefers-reduced-motion:reduce) { .project-image-link:hover .fitland-device { transform:rotate(9deg); } }
