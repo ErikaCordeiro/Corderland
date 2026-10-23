@@ -22,6 +22,11 @@ class SiteTest(unittest.TestCase):
                 self.assertEqual(response.status_code, 200)
                 html = response.get_data(as_text=True)
                 self.assertIn('lang="pt-BR"', html)
+                names = dict(zip(PROJECT_SLUGS, ['Fluxonland', 'Hey Dev', 'Lua Active', 'Fitland']))
+                expected = 'Coderland | Tecnologia que transforma negócios' if route == '/' else names[route.split('/')[-1]] + ' | Projetos Coderland'
+                self.assertIn('<title>' + expected + '</title>', html)
+                self.assertIn('property="og:title" content="' + expected + '"', html)
+                self.assertIn('href="https://corderland.onrender.com' + route + '"', html)
                 self.assertIn('property="og:description"', html)
                 self.assertIn('rel="canonical"', html)
                 self.assertNotIn('type="text/babel"', html)
@@ -37,7 +42,7 @@ class SiteTest(unittest.TestCase):
             response = self.client.get('/projetos/fitland')
             self.assertEqual(response.status_code, 200)
             html = response.get_data(as_text=True)
-            self.assertIn('Fitland — Tecnologia que transforma o acompanhamento de treinos.', html)
+            self.assertIn('<title>Fitland | Projetos Coderland</title>', html)
             self.assertIn('https://corderland.onrender.com/projetos/fitland', html)
             self.assertIn('window.__PROJECT_SLUG__ = "fitland"', html)
         project = self.client.get('/api/site').json['projects'][-1]
@@ -58,12 +63,21 @@ class SiteTest(unittest.TestCase):
     def test_all_local_template_assets_resolve(self):
         html = self.client.get('/').get_data(as_text=True)
         assets = re.findall(r'(?:src|href)="(/static/[^"]+)"', html)
-        self.assertEqual(len(assets), 7)
+        self.assertEqual(len(assets), 9)
         for asset in assets:
             with self.subTest(asset=asset):
                 with self.client.get(asset) as response:
                     self.assertEqual(response.status_code, 200)
         with self.client.get('/static/css/brand-chat.css') as response:
+            self.assertEqual(response.status_code, 200)
+
+    def test_commercial_whatsapp_configuration(self):
+        whatsapp = self.client.get('/api/site').json['whatsapp']
+        self.assertEqual(whatsapp['waMe'], 'https://wa.me/5548988006788')
+        self.assertEqual(whatsapp['phoneDisplay'], '(48) 98800-6788')
+        self.assertEqual(whatsapp['defaultMessage'],
+                         'Olá! Conheci a Coderland pelo site e gostaria de conversar sobre um projeto.')
+        with self.client.get('/static/css/footer.css') as response:
             self.assertEqual(response.status_code, 200)
 
     def test_branding_icons_and_social_image(self):

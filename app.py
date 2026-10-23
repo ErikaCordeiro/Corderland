@@ -24,7 +24,7 @@ def load_site():
 def render_site(project_slug=None):
     site = load_site()
     project = site["projects"][PROJECT_SLUGS.index(project_slug)] if project_slug else None
-    title = (project.get("presentationTitle", project["name"]) + " | Coderland") if project else "Coderland | Tecnologia que transforma negócios"
+    title = (project["name"] + " | Projetos Coderland") if project else "Coderland | Tecnologia que transforma negócios"
     description = project["description"] if project else site["hero"]["subhead"]
     return render_template("index.html", site=site, project_slug=project_slug,
                            title=title, description=description,

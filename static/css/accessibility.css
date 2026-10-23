@@ -1,0 +1,90 @@
+/* Legibility and interaction refinements; decorative artwork keeps its own scale. */
+body { font-size:16px; }
+.section { padding-block:88px; }
+.kicker { font-size:12px; letter-spacing:.12em; }
+.hero-description,.section-subhead,.service-card p,.audit-pillars p,.audit-steps p,
+.project-content>p:not(.kicker),.process-timeline p,.contact-note,.contact-form>p,
+.detail-overview p,.detail-overview li { font-size:16px; line-height:1.7; }
+.hero-signature,.hero-bottom,.service-bottom small,.card-index,.audit-pillars article>span,
+.audit-steps li>span,.dossier-note,.process-timeline small,.detail-note p,.detail-note>span,
+.fitland-gallery figcaption,.fitland-tech li { font-size:14px; line-height:1.6; }
+.service-card p { max-width:none; }
+.service-card h3 { font-size:20px; }
+.service-bottom a { width:44px; height:44px; border-color:#856b98; }
+.audit-pillars h3,.audit-steps h3 { font-size:18px; line-height:1.4; }
+.project-content>p { min-height:0; }
+.project-content ul { flex-wrap:wrap; }
+.project-content li { font-size:13px; line-height:1.6; }
+.project-content .text-link,.text-link { font-size:16px; min-height:44px; }
+.project-visual figcaption { font-size:12px; line-height:1.5; padding:8px 12px; background:#160d21; color:#d9cce6; }
+.primary-button { font-size:16px; min-height:48px; }
+.phone-link { font-size:16px; min-height:44px; display:flex; align-items:center; width:fit-content; }
+.contact-form label { font-size:15px; }
+.contact-form input,.contact-form select,.contact-form textarea,.chat-form input {
+  font-size:16px; min-height:48px; border-color:#947ca5; background:#1c1028; color:#fff;
+}
+.contact-form input::placeholder,.contact-form textarea::placeholder,.chat-form input::placeholder { color:#c6b7d1; opacity:1; }
+.contact-form>.primary-button { font-size:16px; }
+.contact-form>small,.form-success,.form-error { font-size:14px; line-height:1.6; }
+.form-error { color:#ffc3ce; }
+.site-header nav a { font-size:16px; min-height:44px; display:flex; align-items:center; }
+.header-action { font-size:14px; min-height:44px; }
+.premium-footer__description,.premium-footer__identity>p { font-size:16px; }
+.premium-footer__explore>a { min-height:44px; font-size:16px; }
+.premium-footer__contact-copy>span,.premium-footer__contact>p,
+.premium-footer__bottom>p,.premium-footer__bottom>a { font-size:14px; line-height:1.7; }
+.site-chat .chat-toggle { font-size:13px; }
+.chat-panel header button { min-width:44px; min-height:44px; }
+.chat-panel header span,.chat-message,.chat-message p,.chat-form button { font-size:15px; }
+.chat-message a { min-height:44px; align-items:center; }
+.chat-form { padding:12px; }
+.chat-form button { min-height:48px; }
+.chat-messages { min-height:0; max-height:min(330px,40dvh); }
+.chat-panel { overflow:auto; }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {
+  outline:3px solid #ffd16e; outline-offset:3px;
+}
+.reveal:not(.revealed),.reveal:focus-within { opacity:1; translate:none; }
+#main-content:focus { outline:none; }
+@media(max-width:1100px) {
+  .header-inner { gap:18px; }
+  .site-header nav { gap:18px; }
+  .site-header nav a { font-size:14px; }
+}
+@media(min-width:701px) and (max-width:900px) {
+  .site-header .brand { font-size:20px; }
+  .header-inner { gap:12px; width:calc(100% - 32px); }
+  .site-header nav { gap:12px; }
+  .site-header nav a { font-size:13px; }
+  .header-action { font-size:12px; padding:8px 12px; gap:8px; }
+}
+@media(max-width:700px) {
+  .section { padding-block:60px; }
+  .site-header nav { max-height:calc(100dvh - 72px); overflow-y:auto; }
+  .site-header nav a { font-size:16px; min-height:48px; }
+  .menu-toggle { width:44px; height:44px; flex-shrink:0; border-color:#947ca5; }
+  .header-action { font-size:12px; min-height:44px; padding:8px 12px; gap:7px; }
+  .header-action>span { display:none; }
+  .header-inner { gap:8px; width:calc(100% - 24px); }
+  .site-header .brand { font-size:19px; gap:7px; }
+  .project-content>p:not(.kicker) { min-height:0; }
+  .project-visual figcaption { font-size:12px; }
+  .contact-form input,.contact-form select,.contact-form textarea { font-size:16px; }
+  .contact-form { padding:24px 18px; }
+  .premium-footer .premium-footer__whatsapp { font-size:15px; }
+  .premium-footer__contact-copy strong { font-size:16px; }
+  .premium-footer__bottom>p { font-size:13px; }
+  .detail-note { gap:14px; }
+}
+@media(max-width:390px) {
+  .site-header .brand { font-size:17px; }
+  .header-action { padding-inline:9px; }
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+.project-content .kicker { font-size:12px; }
+.contact .section-subhead { font-size:16px; }
+.hero-bottom>span { font-size:12px; letter-spacing:.1em; }
+.tech-visual:after { font-size:12px; }
+.service-card h3 { overflow-wrap:anywhere; }
+@media(max-width:500px) { .fitland-features .service-grid { grid-template-columns:1fr; } }
+.chat-message { overflow-wrap:anywhere; }

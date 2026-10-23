@@ -23,6 +23,8 @@
     <link rel="canonical" href="{{ canonical }}" />
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/accessibility.css') }}" />
     <script>window.__CODERLAND_SITE__ = {{ site|tojson }}; window.__PROJECT_SLUG__ = {{ project_slug|tojson }};</script>
     <script defer src="{{ url_for('static', filename='vendor/react.production.min.js') }}"></script>
     <script defer src="{{ url_for('static', filename='vendor/react-dom.production.min.js') }}"></script>

@@ -2,7 +2,8 @@
   "brand": "Coderland",
   "whatsapp": {
     "phoneDisplay": "(48) 98800-6788",
-    "waMe": "https://wa.me/5548988006788"
+    "waMe": "https://wa.me/5548988006788",
+    "defaultMessage": "Olá! Conheci a Coderland pelo site e gostaria de conversar sobre um projeto."
   },
   "hero": {
     "pill": "TECNOLOGIA, ESTRATÉGIA & INOVAÇÃO",
