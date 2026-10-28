@@ -1,5 +1,7 @@
 import json
 import mimetypes
+import os
+from contact_mail import contact
 from pathlib import Path
 
 from flask import Flask, abort, render_template, url_for
@@ -12,6 +14,11 @@ mimetypes.add_type("application/javascript", ".jsx", strict=False)
 mimetypes.add_type("text/css", ".css", strict=False)
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
+
+app.config.update({key: os.environ.get(key, "") for key in (
+    "RESEND_API_KEY", "RESEND_FROM_EMAIL", "CONTACT_TO_EMAIL")})
+app.config["MAX_CONTENT_LENGTH"] = 20000
+app.register_blueprint(contact)
 
 SITE_DATA_PATH = Path(__file__).parent / "data" / "site.json"
 PROJECT_SLUGS = ("fluxonland", "hey-dev", "lua-active", "fitland")

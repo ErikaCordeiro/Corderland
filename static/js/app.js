@@ -296,19 +296,57 @@ const method = [['Mapeamos','Entendemos vendas, atendimento, gestão e operaçã
 function Process() {
   return <section className="section wrap process-section" id="metodo"><SectionHeading number="04" label="Método Coderland" title={<>Boas soluções começam<br/><em>com as perguntas certas.</em></>}/><ol className="process-timeline">{method.map(([title,text,note],i)=><li key={title}><div className="step-marker"><span>0{i+1}</span><i/></div><h3>{title}</h3><p>{text}</p><small>{note}</small></li>)}</ol></section>;
 }
-function Contact() {
-  const [prepared,setPrepared] = React.useState('');
-  const [error,setError] = React.useState('');
-  function submit(e) {
-    e.preventDefault(); setError('');
-    try {
-      const values=new FormData(e.currentTarget);
-      const message=`Olá, Coderland! Sou ${values.get('name').trim()}${values.get('company').trim()?` da empresa ${values.get('company').trim()}`:''}.\nInteresse: ${values.get('project')}.\n\n${values.get('message').trim()}`;
-      if(!values.get('name').trim()||!values.get('message').trim()){setError('Preencha seu nome e uma mensagem para continuar.');return;}
-      setPrepared(whatsappHref(message));
-    }catch{setError('Não foi possível preparar a mensagem. Você pode usar o WhatsApp ao lado.');}
+// Web3Forms access keys are public identifiers, not private API credentials.
+const WEB3FORMS_ACCESS_KEY = '015bad6e-7083-4293-a251-b7ebea88bdf2';
+async function sendWeb3Contact(values) {
+  if(values.botcheck) throw new Error('Invalid submission');
+  const limits={name:120,email:254,phone:40,company:160,project:100,message:3000};
+  values={...values};
+  for(const [key,limit] of Object.entries(limits)) {
+    const value=values[key]||'';
+    if(typeof value!=='string'||value.length>limit||(key!=='message'&&/[\r\n\0]/.test(value))) throw new Error('Invalid field');
+    values[key]=value.trim();
   }
-  return <section className="contact-shell" id="contato"><div className="section wrap contact"><div><p className="kicker"><span>05 /</span> Vamos construir</p><h2>Seu próximo passo<br/>merece <em>boa tecnologia.</em></h2><p className="section-subhead">Conte o que sua empresa precisa resolver. Vamos encontrar um caminho para transformar esse desafio em uma solução.</p><a className="primary-button" href={whatsappHref()} target="_blank" rel="noopener noreferrer">Conversar no WhatsApp <Arrow/></a><a className="phone-link" href={whatsappHref()} target="_blank" rel="noopener noreferrer">{SITE.whatsapp.phoneDisplay}</a><p className="contact-note">Estratégia, desenvolvimento e evolução.<br/>Com atenção ao que faz diferença para você.</p></div><form className="contact-form" onSubmit={submit} onChange={()=>{setPrepared('');setError('');}}><h3>Vamos falar sobre sua ideia?</h3><p>Prepare sua mensagem e continue pelo WhatsApp.</p><div className="form-row"><label>Nome <span aria-hidden="true">*</span><input name="name" autoComplete="name" placeholder="Como podemos chamar você?" required maxLength="120"/></label><label>Empresa<input name="company" autoComplete="organization" placeholder="Nome da empresa" maxLength="160"/></label></div><label>Interesse <span aria-hidden="true">*</span><select name="project" required defaultValue=""><option value="" disabled>Selecione uma solução</option>{SITE.projects.map(p=><option key={p.name}>{p.name}</option>)}<option>Auditoria</option><option>Projeto personalizado</option></select></label><label>Mensagem <span aria-hidden="true">*</span><textarea name="message" rows="4" placeholder="Qual desafio você quer resolver?" required maxLength="3000"/></label><button type="submit" className="primary-button">Preparar mensagem <Arrow/></button><div aria-live="polite">{prepared&&<div className="form-success"><p>Mensagem pronta. Revise e envie na conversa do WhatsApp.</p><a className="text-link" href={prepared} target="_blank" rel="noopener noreferrer">Continuar no WhatsApp <Arrow/></a></div>}{error&&<p className="form-error" role="alert">{error}</p>}</div><small>Nenhuma mensagem é enviada automaticamente.</small></form></div></section>;
+  if(!values.name||!values.project||!values.message||! /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) throw new Error('Required fields');
+  const controller=new AbortController();
+  let timer;
+  try {
+    return await Promise.race([
+      (async()=>{
+        const response=await fetch('https://api.web3forms.com/submit',{
+          method:'POST',credentials:'omit',redirect:'error',signal:controller.signal,
+          headers:{'Content-Type':'application/json','Accept':'application/json'},
+          body:JSON.stringify({access_key:WEB3FORMS_ACCESS_KEY,
+            subject:'Novo contato — Coderland',from_name:'Coderland',
+            name:values.name,email:values.email,replyto:values.email,
+            phone:values.phone||'',company:values.company||'',
+            project:values.project,message:values.message,botcheck:values.botcheck||''})
+        });
+        const result=await response.json();
+        if(!response.ok||!result||result.success!==true) throw new Error('Not accepted');
+      })(),
+      new Promise((_,reject)=>{timer=setTimeout(()=>{controller.abort();reject(new Error('Timeout'));},15000);})
+    ]);
+  } finally {clearTimeout(timer);}
+}
+function Contact() {
+  const [status,setStatus] = React.useState('');
+  const [error,setError] = React.useState('');
+  const busy = React.useRef(false);
+  async function submit(e) {
+    e.preventDefault();
+    if(busy.current) return;
+    const form=e.currentTarget;
+    if(!form.reportValidity()) return;
+    busy.current=true; setError(''); setStatus('sending');
+    try {
+      const values=Object.fromEntries(new FormData(form));
+      await sendWeb3Contact(values);
+      setStatus('success'); form.reset();
+    }catch{setStatus('');setError('Não foi possível enviar. Tente novamente.');}
+    finally {busy.current=false;}
+  }
+  return <section className="contact-shell" id="contato"><div className="section wrap contact"><div><p className="kicker"><span>05 /</span> Vamos construir</p><h2>Seu próximo passo<br/>merece <em>boa tecnologia.</em></h2><p className="section-subhead">Conte o que sua empresa precisa resolver. Vamos encontrar um caminho para transformar esse desafio em uma solução.</p><a className="primary-button" href={whatsappHref()} target="_blank" rel="noopener noreferrer">Conversar no WhatsApp <Arrow/></a><a className="phone-link" href={whatsappHref()} target="_blank" rel="noopener noreferrer">{SITE.whatsapp.phoneDisplay}</a><p className="contact-note">Estratégia, desenvolvimento e evolução.<br/>Com atenção ao que faz diferença para você.</p></div><form className="contact-form" onSubmit={submit} aria-busy={status==='sending'} onChange={()=>{if(!busy.current){setStatus('');setError('');}}}><h3>Vamos falar sobre sua ideia?</h3><p>Envie sua solicitação diretamente para a Coderland.</p><div className="form-row"><label>Nome <span aria-hidden="true">*</span><input name="name" autoComplete="name" placeholder="Como podemos chamar você?" required maxLength="120"/></label><label>Empresa<input name="company" autoComplete="organization" placeholder="Nome da empresa" maxLength="160"/></label></div><div className="form-row"><label>E-mail <span aria-hidden="true">*</span><input name="email" type="email" autoComplete="email" required maxLength="254" placeholder="voce@empresa.com"/></label><label>Telefone<input name="phone" type="tel" autoComplete="tel" maxLength="40" placeholder="Seu telefone (opcional)"/></label></div><label className="contact-trap" aria-hidden="true">Website<input type="checkbox" name="botcheck" tabIndex="-1" autoComplete="off"/></label><label>Interesse <span aria-hidden="true">*</span><select name="project" required defaultValue=""><option value="" disabled>Selecione uma solução</option>{SITE.projects.map(p=><option key={p.name}>{p.name}</option>)}<option>Auditoria</option><option>Projeto personalizado</option></select></label><label>Mensagem <span aria-hidden="true">*</span><textarea name="message" rows="4" placeholder="Qual desafio você quer resolver?" required maxLength="3000"/></label><button type="submit" className="primary-button" disabled={status==='sending'}>{status==='sending'?'Enviando mensagem...':'Enviar mensagem'} <Arrow/></button><div aria-live="polite" aria-atomic="true">{status==='success'&&<div className="form-success"><p>Mensagem enviada com sucesso!</p></div>}{error&&<p className="form-error" role="alert">{error}</p>}</div><small>Seus dados serão usados para responder à sua solicitação.</small></form></div></section>;
 }
 function WhatsAppIcon() {
   return <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.7 7.4L3 20.5l1.4-4.6A8.5 8.5 0 1 1 20.5 11.7Z"/><path d="M8.3 7.3c-.5 0-1 1-1 1.7 0 2.6 3.5 6.2 6.4 6.7.9.2 2-.7 2-1.2 0-.3-2-1.3-2.2-1.2l-.9.8c-1.5-.6-2.5-1.6-3.2-3.1l.7-.8c.2-.3-.9-2.9-1.2-2.9Z"/></svg>;

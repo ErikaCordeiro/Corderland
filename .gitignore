@@ -4,3 +4,8 @@ __pycache__/
 server.*.log
 .pytest_cache/
 qa/artifacts/
+
+# Private local environment files; keep only the credential-free template.
+.env
+.env.*
+!.env.example
